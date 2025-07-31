@@ -1,6 +1,6 @@
 // src/constants.rs
 
-pub const COMPANY_NAME: &str = "Rayburn Loan Processing";
+pub const COMPANY_NAME: &str = "Rusty Keyboard Editor";
 pub const COMPANY_ADDRESS: &str = "2108 N St, Ste N, Sacramento, CA 95816";
 pub const COMPANY_PHONE: &str = "(555) 123-4567";
 pub const COMPANY_NMLS: &str = "2651903";

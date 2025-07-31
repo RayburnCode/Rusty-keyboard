@@ -32,9 +32,10 @@ pub fn Navbar(children: Element) -> Element {
                 div { class: "flex h-16 items-center justify-between",
                     // Logo/Brand (you can add this later if needed)
                     div { class: "flex items-center md:hidden" }
-
+                    p { "Rusty Keyboard Editor" }
                     // Desktop navigation (center)
                     div { class: "hidden md:flex items-center space-x-8",
+
                         Link {
                             to: Route::Home {},
                             class: active_class(
@@ -42,7 +43,25 @@ pub fn Navbar(children: Element) -> Element {
                                 &current_route,
                                 "text-CustomAccent hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
                             ),
-                            "Home"
+                            "Layout Editor"
+                        }
+                        Link {
+                            to: Route::Home {},
+                            class: active_class(
+                                &Route::Home {},
+                                &current_route,
+                                "text-CustomAccent hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
+                            ),
+                            "Firmware"
+                        }
+                        Link {
+                            to: Route::Home {},
+                            class: active_class(
+                                &Route::Home {},
+                                &current_route,
+                                "text-CustomAccent hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
+                            ),
+                            "Presets"
                         }
                         // Mobile menu button and Contact Us button container
                         div { class: "flex items-center space-x-4",
@@ -81,13 +100,6 @@ pub fn Navbar(children: Element) -> Element {
                                         }
                                     }
                                 }
-                            }
-
-                            // Contact Us button
-                            Link {
-                                to: Route::Home {},
-                                class: if matches!(current_route, Route::Home {}) { "rounded-md bg-CustomHover px-4 py-2 text-sm font-medium text-CustomBackground shadow focus:outline-none transition-colors" } else { "rounded-md bg-CustomHover px-4 py-2 text-sm font-medium text-CustomBackground shadow hover:bg-CustomHoverDarker focus:outline-none transition-colors" },
-                                "Home"
                             }
                         }
                     }

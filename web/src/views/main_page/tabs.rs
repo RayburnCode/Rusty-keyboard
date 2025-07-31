@@ -1,43 +1,110 @@
 use dioxus::prelude::*;
 use serde_json::json;
 
-/// Home page
+
+#[derive(PartialEq, Clone)]
+enum ActiveTab {
+    Summary,
+    JsonOutput,
+    Properties
+}
+
+/// Tab component for switching between keyboard views
 #[component]
 pub fn KeyboardTabs() -> Element {
+    let mut active_tab = use_signal(|| ActiveTab::Properties);
+
+    let properties_tab_class = if *active_tab.read() == ActiveTab::Properties {
+        "px-4 py-2 font-medium text-sm focus:outline-none text-blue-600 border-b-2 border-blue-600"
+    } else {
+        "px-4 py-2 font-medium text-sm focus:outline-none text-gray-500 hover:text-gray-700"
+    };
+
+    let summary_tab_class = if *active_tab.read() == ActiveTab::Summary {
+        "px-4 py-2 font-medium text-sm focus:outline-none text-blue-600 border-b-2 border-blue-600"
+    } else {
+        "px-4 py-2 font-medium text-sm focus:outline-none text-gray-500 hover:text-gray-700"
+    };
+
+    let json_tab_class = if *active_tab.read() == ActiveTab::JsonOutput {
+        "px-4 py-2 font-medium text-sm focus:outline-none text-blue-600 border-b-2 border-blue-600"
+    } else {
+        "px-4 py-2 font-medium text-sm focus:outline-none text-gray-500 hover:text-gray-700"
+    };
 
     rsx! {
-        // Hero section - primary brand section
-        p { "JSON Output" }
+        div { class: "flex flex-col w-full",
+            // Tab headers
+            div { class: "flex border-b border-gray-200",
 
-        p { "Summary" }
-        table {
-            thead {
-                tr {
-                    th { "Key Size Summary" }
+                button {
+                    class: properties_tab_class,
+                    onclick: move |_| active_tab.set(ActiveTab::Properties),
+                    "Properties"
+                }
+                button {
+                    class: summary_tab_class,
+                    onclick: move |_| active_tab.set(ActiveTab::Summary),
+                    "Summary"
+                }
+                button {
+                    class: json_tab_class,
+                    onclick: move |_| active_tab.set(ActiveTab::JsonOutput),
+                    "JSON Output"
                 }
             }
-            tbody {
-                tr {
-                    td { "1x1" }
-                    td { "1x2" }
-                    td { "2x1" }
-                }
-                tr {
-                    td { "C" }
-                    td { "Copy" }
-                    td { "Ctrl + C" }
-                }
-                tfoot {
-                    tr {
-                        td { "Total" }
-                        td { "3" }
-                    }
+
+            // Tab content
+            div { class: "p-4",
+                match *active_tab.read() {
+                    ActiveTab::Properties => rsx! {
+                        div { class: "bg-gray-100 p-4 rounded-lg",
+                            p { class: "text-gray-700 text-sm mb-2", "Properties will be displayed here." }
+                        }
+                    },
+                    ActiveTab::Summary => rsx! {
+                        div {
+                            table { class: "min-w-full divide-y divide-gray-200",
+                                thead { class: "bg-gray-50",
+                                    tr {
+                                        th { class: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                            "Key Size Summary"
+                                        }
+                                    }
+                                }
+                                tbody { class: "bg-white divide-y divide-gray-200",
+                                    tr {
+                                        td { class: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", "1x1" }
+                                        td { class: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", "=2" }
+                                    }
+                                    tr {
+                                        td { class: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", "1x2" }
+                                    }
+                                    tr {
+                                        td { class: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", "2x1" }
+                                    }
+                                }
+                                tfoot { class: "bg-gray-50",
+                                    tr {
+                                        td { class: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                            "Total"
+                                        }
+                                        td { class: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+                                            "3"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    ActiveTab::JsonOutput => rsx! {
+                        div { class: "bg-gray-100 p-4 rounded-lg", JSONOUT {} }
+                    },
                 }
             }
         }
-    }}
-
-
+    }
+}
 
 #[component]
 pub fn JSONOUT() -> Element {

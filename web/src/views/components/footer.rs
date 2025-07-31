@@ -86,13 +86,6 @@ rsx! {
                 }
             }
         }
-        // Material Disclosures
-        div { class: "text-white pb-1 text-center  text-xs bg-CustomNav italic",
-            p {
-                "Rates subject to change without notice. Not a commitment to lend. 
-            All loans subject to credit approval. Some products may not be available in all states.
-            Not endorsed or approved by any government agency."
-            }
-        }
+    
     }
 }}
