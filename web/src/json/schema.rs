@@ -1,6 +1,18 @@
 use serde::{Serialize, Deserialize};
 use serde_json::json;
 
+
+/// NEED TO IMPLEMENT
+/// I want to use this to be able to generate a more specific layout
+/// steps, 1, .5, .25
+#[derive(Debug, Serialize, Deserialize)]
+pub struct KeyboardStep {
+    pub step: f32,
+    pub keys: Vec<KeyData>,
+}
+
+
+
 /// Complete keyboard layout specification
 #[derive(Debug, Serialize, Deserialize)]
 pub struct KeyboardLayout {
