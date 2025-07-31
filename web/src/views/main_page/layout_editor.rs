@@ -1,48 +1,55 @@
 use dioxus::prelude::*;
-use crate::views::components::Key;
+use crate::views::components::{Key, KeyProps};
+
+#[derive(PartialEq, Props, Clone)]
+pub struct LayoutEditorProps {
+    pub keys: Vec<KeyProps>,
+}
 
 /// Keyboard Layout Editor
 #[component]
-pub fn LayoutEditor() -> Element {
-    rsx! {
-        div { class: "flex flex-col gap-4 p-8 max-w-4xl mx-auto",
+pub fn LayoutEditor(props: LayoutEditorProps) -> Element {
+    let mut zoom_level = use_signal(|| 1.0_f64);
 
-            Key {
-                label: "A".to_string(),
-                secondary_label: "".to_string(),
-                width: 1,
-                height: 1,
+    rsx! {
+        div { class: "flex flex-col gap-4 p-4 mx-auto w-full max-w-6xl",
+            h2 { class: "text-xl font-bold mb-4", "Keyboard Layout Editor" }
+            
+            // Zoom controls
+            div { class: "flex gap-2 items-center justify-end",
+                button {
+                    class: "px-3 py-1 bg-gray-200 rounded hover:bg-gray-300",
+                    onclick: move |_| zoom_level.set((zoom_level() * 0.9_f64).max(0.5_f64)),
+                    "Zoom Out -"
+                }
+                span { class: "text-sm w-12 text-center", "{(zoom_level() * 100.0) as i32}%" }
+                button {
+                    class: "px-3 py-1 bg-gray-200 rounded hover:bg-gray-300",
+                    onclick: move |_| zoom_level.set((zoom_level() * 1.1_f64).min(2.0_f64)),
+                    "Zoom In +"
+                }
             }
-            // Visual keyboard layout area
+
+            // Keyboard container
             div {
-                class: "w-full min-h-[500px] bg-gray-100 border-2 border-dashed border-gray-400 rounded-lg",
-                id: "keyboard-layout-area",
-                // Placeholder grid to visualize key positions
-                div { class: "grid grid-cols-12 gap-2 p-4",
-                    // Top function row placeholder
-                    div { class: "col-span-12 h-12 bg-gray-200 rounded flex items-center justify-center text-gray-500",
-                        "Function Keys Row"
-                    }
-                    // Main keyboard area placeholder
-                    div { class: "col-span-10 grid grid-cols-10 gap-1",
-                        // This would be replaced with actual key components later
-                        {(0..30).map(|_| rsx! {
-                            div { class: "h-12 bg-white border border-gray-300 rounded flex items-center justify-center text-sm",
-                                "Key"
+                class: "relative overflow-auto bg-gray-100 border-2 border-dashed border-gray-400 rounded-lg p-4",
+                style: "height: 500px;",
+                
+                div {
+                    class: "keyboard-layout",
+                    style: "transform: scale({zoom_level()}); transform-origin: 0 0;",
+                    
+                    // Dynamic keyboard layout based on props
+                    div { class: "flex flex-wrap gap-1 w-fit max-w-4xl",
+                        for key in &props.keys {
+                            Key { 
+                                label: key.label.clone(),
+                                secondary_label: key.secondary_label.clone(),
+                                width: key.width,
+                                height: key.height,
+                                on_click: key.on_click.clone(),
                             }
-                        })}
-                    }
-                    // Numpad placeholder
-                    div { class: "col-span-2 grid grid-cols-2 gap-1",
-                        {(0..10).map(|_| rsx! {
-                            div { class: "h-12 bg-white border border-gray-300 rounded flex items-center justify-center text-sm",
-                                "Num"
-                            }
-                        })}
-                    }
-                    // Spacebar placeholder
-                    div { class: "col-span-12 h-16 bg-gray-300 rounded mt-4 flex items-center justify-center",
-                        "Spacebar"
+                        }
                     }
                 }
             }

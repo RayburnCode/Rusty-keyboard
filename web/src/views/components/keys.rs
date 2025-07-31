@@ -1,6 +1,9 @@
 use dioxus::prelude::*;
 
-#[derive(PartialEq, Props, Clone)]
+
+
+
+#[derive(PartialEq, Props, Clone,Default)]
 pub struct KeyProps {
     #[props(default)]
     pub label: String,
@@ -16,7 +19,32 @@ pub struct KeyProps {
     
     #[props(default)]
     pub on_click: EventHandler<()>,
+    
+    #[props(default = 0)]
+    pub x: u8,               // Grid X position
+    
+    #[props(default = 0)]
+    pub y: u8,               // Grid Y position
+    
+    #[props(default = "#FFFFFF".to_string())]
+    pub color: String,       // Background color (e.g., "#FFFFFF")
+    
+    #[props(default)]
+    pub keycode: String,     // Associated keycode (e.g., "KeyA")
+    
+    #[props(default = 0)]
+    pub layer: u8,           // For multi-layer keyboards
+    
+    #[props(default = false)]
+    pub selected: bool,
 }
+
+
+
+          // Height units (typically 1 or 2)
+  
+
+
 
 #[component]
 pub fn Key(props: KeyProps) -> Element {

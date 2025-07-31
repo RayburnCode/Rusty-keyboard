@@ -5,4 +5,4 @@ mod navbar;
 pub use navbar::Navbar;
 
 mod keys;
-pub use keys::Key;
+pub use keys::{Key,KeyProps};

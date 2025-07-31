@@ -2,6 +2,7 @@ use dioxus::prelude::*;
 mod constants;
 use crate::constants::*;
 
+mod layouts;
 mod views;
 use crate::views::{AppLayout, };
 use crate::views::main_page::Home;

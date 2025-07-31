@@ -1,0 +1,90 @@
+use crate::views::components::KeyProps;
+
+pub fn get_colemak_layout() -> Vec<KeyProps> {
+    vec![
+        // Function row (same as QWERTY)
+        KeyProps { label: "Esc".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F1".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F2".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F3".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F4".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F5".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F6".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F7".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F8".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F9".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F10".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F11".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F12".to_string(), width: 1, height: 1, ..Default::default() },
+        
+        // Number row (same as QWERTY)
+        KeyProps { label: "`".to_string(), secondary_label: "~".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "1".to_string(), secondary_label: "!".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "2".to_string(), secondary_label: "@".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "3".to_string(), secondary_label: "#".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "4".to_string(), secondary_label: "$".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "5".to_string(), secondary_label: "%".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "6".to_string(), secondary_label: "^".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "7".to_string(), secondary_label: "&".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "8".to_string(), secondary_label: "*".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "9".to_string(), secondary_label: "(".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "0".to_string(), secondary_label: ")".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "-".to_string(), secondary_label: "_".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "=".to_string(), secondary_label: "+".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Backspace".to_string(), width: 2, height: 1, ..Default::default() },
+        
+        // Colemak top row: q w f p g j l u y ; [ ] \
+        KeyProps { label: "Tab".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Q".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "W".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "F".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "P".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "G".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "J".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "L".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "U".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Y".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: ";".to_string(), secondary_label: ":".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "[".to_string(), secondary_label: "{".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "]".to_string(), secondary_label: "}".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "\\".to_string(), secondary_label: "|".to_string(), width: 1, height: 1, ..Default::default() },
+        
+        // Colemak home row: a r s t d h n e i o '
+        KeyProps { label: "Caps Lock".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "A".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "R".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "S".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "T".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "D".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "H".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "N".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "E".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "I".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "O".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "'".to_string(), secondary_label: "\"".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Enter".to_string(), width: 2, height: 1, ..Default::default() },
+        
+        // Colemak bottom row: z x c v b k m , . /
+        KeyProps { label: "Shift".to_string(), width: 2, height: 1, ..Default::default() },
+        KeyProps { label: "Z".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "X".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "C".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "V".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "B".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "K".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "M".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: ",".to_string(), secondary_label: "<".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: ".".to_string(), secondary_label: ">".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "/".to_string(), secondary_label: "?".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Shift".to_string(), width: 2, height: 1, ..Default::default() },
+        
+        // Bottom row (same as QWERTY)
+        KeyProps { label: "Ctrl".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Win".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Alt".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Space".to_string(), width: 6, height: 1, ..Default::default() },
+        KeyProps { label: "Alt".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Menu".to_string(), width: 1, height: 1, ..Default::default() },
+        KeyProps { label: "Ctrl".to_string(), width: 1, height: 1, ..Default::default() },
+    ]
+}
