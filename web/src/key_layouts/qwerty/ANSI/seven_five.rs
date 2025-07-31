@@ -1,0 +1,1 @@
+// 75% boards compact the keys tightly together, fitting nearly as many keys as a TKL.

@@ -46,9 +46,9 @@ pub fn Navbar(children: Element) -> Element {
                             "Layout Editor"
                         }
                         Link {
-                            to: Route::Home {},
+                            to: Route::Firmware {},
                             class: active_class(
-                                &Route::Home {},
+                                &Route::Firmware {},
                                 &current_route,
                                 "text-CustomAccent hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
                             ),

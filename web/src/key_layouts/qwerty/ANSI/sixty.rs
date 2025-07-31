@@ -1,0 +1,1 @@
+// A 60% keyboard is a common “compact” layout. It omits the numpad, arrow keys, and function row.

@@ -1,0 +1,1 @@
+// Like a full-size board, but without the numpad. This form factor is fairly standardized without much variation with the directional keys

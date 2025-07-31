@@ -1,8 +1,8 @@
 use dioxus::prelude::*;
 use crate::views::main_page::{KeyboardOptions, LayoutEditor, KeyboardTabs};
 use crate::views::components::KeyProps;
-use crate::layouts::{LayoutType, LayoutType::Qwerty};
-
+use crate::key_layouts::{LayoutType, LayoutType::Qwerty};
+ 
 /// Home page with responsive layout
 #[component]
 pub fn Home() -> Element {
@@ -169,7 +169,6 @@ pub fn Home() -> Element {
             p { class: "text-red-500 text-lg font-medium mb-4",
                 "Use arrow keys or mouse to move around the keyboard layout"
             }
-            
             // Layout selector
             div { class: "mb-4 p-4 bg-white rounded-lg shadow",
                 h3 { class: "text-lg font-semibold mb-2", "Keyboard Layout" }
@@ -191,7 +190,6 @@ pub fn Home() -> Element {
                     }
                 }
             }
-            
             // Control options at top
             KeyboardOptions {
                 on_add_keys: handle_add_keys,
@@ -200,7 +198,6 @@ pub fn Home() -> Element {
                 on_redo: handle_redo,
                 on_export: handle_export,
             }
-            
             // Main content area - responsive row/column layout
             div { class: "flex flex-col lg:flex-row gap-4 mt-4",
                 // Layout editor takes 2/3 space on desktop, full width on mobile
@@ -208,9 +205,7 @@ pub fn Home() -> Element {
                     LayoutEditor { keys: keys.read().clone() }
                 }
                 // Tabs take 1/3 space on desktop, full width on mobile
-                div { class: "w-full lg:w-1/3", 
-                    KeyboardTabs {} 
-                }
+                div { class: "w-full lg:w-1/3", KeyboardTabs {} }
             }
         }
     }
