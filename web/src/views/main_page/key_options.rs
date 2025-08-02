@@ -7,10 +7,9 @@ pub enum AddKeyAmount {
     Ten,
 }
 
-/// Home page
 #[component]
 pub fn KeyboardOptions(
-    on_add_keys: EventHandler<usize>, // Takes number of keys to add
+    on_add_keys: EventHandler<usize>,
     on_delete_key: EventHandler<()>,
     on_undo: EventHandler<()>,
     on_redo: EventHandler<()>,
@@ -20,109 +19,78 @@ pub fn KeyboardOptions(
     let mut show_dropdown = use_signal(|| false);
 
     rsx! {
-        div { class: "flex flex-row flex-wrap gap-2 p-4 bg-gray-100 rounded-lg items-center",
+        div { class: "flex flex-row flex-wrap gap-2 p-3 bg-white rounded-lg border border-gray-200 items-center shadow-sm",
             // Add Key button with dropdown
             div { class: "relative",
                 button {
-                    class: "px-4 cursor-pointer py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors flex items-center gap-1",
-                    onclick: move |_| {
-                        let count = match *add_amount.read() {
-                            AddKeyAmount::One => 1,
-                            AddKeyAmount::Five => 5,
-                            AddKeyAmount::Ten => 10,
-                        };
-                        on_add_keys.call(count);
-                    },
+                    class: "cursor-pointer  px-3 py-1.5 text-sm bg-white text-gray-700 rounded-md border border-gray-300 hover:bg-gray-50 transition-all flex items-center gap-1",
+                    onclick: move |_| show_dropdown.toggle(),
                     "Add Key"
                     svg {
-                        class: "w-4 h-4",
+                        class: "w-4 h-4 text-gray-500",
                         xmlns: "http://www.w3.org/2000/svg",
                         view_box: "0 0 20 20",
                         fill: "currentColor",
                         path { d: "M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" }
                     }
                 }
-                // Dropdown menu
                 if *show_dropdown.read() {
                     div {
-                        class: "absolute z-10 mt-1 w-32 bg-white rounded-md shadow-lg",
+                        class: " cursor-pointer  absolute z-10 mt-1 w-32 bg-white rounded-md shadow-lg border border-gray-200",
                         onclick: move |e| e.stop_propagation(),
                         div { class: "py-1",
-                            button {
-                                class: {
-                                    format!(
-                                        "block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 {}",
-                                        if *add_amount.read() == AddKeyAmount::One {
-                                            "bg-blue-50 text-blue-600"
+                            for (amount , label) in [
+                                (AddKeyAmount::One, "1 Key"),
+                                (AddKeyAmount::Five, "5 Keys"),
+                                (AddKeyAmount::Ten, "10 Keys"),
+                            ]
+                                .iter()
+                            {
+                                button {
+                                    class: format!(
+                                        "cursor-pointer  block w-full text-left px-3 py-1.5 text-sm hover:bg-gray-100 {}",
+                                        if *add_amount.read() == *amount {
+                                            "cursor-pointer  bg-blue-50 text-blue-600"
                                         } else {
                                             "text-gray-700"
                                         },
-                                    )
-                                },
-                                onclick: move |_| {
-                                    add_amount.set(AddKeyAmount::One);
-                                    show_dropdown.set(false);
-                                },
-                                "Add 1 Key"
-                            }
-                            button {
-                                class: {
-                                    format!(
-                                        "block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 {}",
-                                        if *add_amount.read() == AddKeyAmount::Five {
-                                            "bg-blue-50 text-blue-600"
-                                        } else {
-                                            "text-gray-700"
-                                        },
-                                    )
-                                },
-                                onclick: move |_| {
-                                    add_amount.set(AddKeyAmount::Five);
-                                    show_dropdown.set(false);
-                                },
-                                "Add 5 Keys"
-                            }
-                            button {
-                                class: {
-                                    format!(
-                                        "block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 {}",
-                                        if *add_amount.read() == AddKeyAmount::Ten {
-                                            "bg-blue-50 text-blue-600"
-                                        } else {
-                                            "text-gray-700"
-                                        },
-                                    )
-                                },
-                                onclick: move |_| {
-                                    add_amount.set(AddKeyAmount::Ten);
-                                    show_dropdown.set(false);
-                                },
-                                "Add 10 Keys"
+                                    ),
+                                    onclick: move |_| {
+                                        add_amount.set(amount.clone());
+                                        show_dropdown.set(false);
+                                        let count = match amount {
+                                            AddKeyAmount::One => 1,
+                                            AddKeyAmount::Five => 5,
+                                            AddKeyAmount::Ten => 10,
+                                        };
+                                        on_add_keys.call(count);
+                                    },
+                                    "{label}"
+                                }
                             }
                         }
                     }
                 }
             }
 
-            // Other controls
+            // Action buttons
             button {
-                class: "px-4 cursor-pointer py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors",
-                disabled: false, // You'd set this based on selection state
+                class: "cursor-pointer  px-3 py-1.5 text-sm bg-white text-red-600 rounded-md border border-red-200 hover:bg-red-50 transition-all",
                 onclick: move |_| on_delete_key.call(()),
-                "Delete Key"
+                "Delete"
             }
             button {
-                class: "px-4 cursor-pointer py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors",
+                class: "cursor-pointer px-3 py-1.5 text-sm bg-white text-gray-600 rounded-md border border-gray-200 hover:bg-gray-50 transition-all",
                 onclick: move |_| on_undo.call(()),
-                "Undo (Ctrl+Z)"
+                "Undo"
             }
             button {
-                class: " cursor-pointer px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors",
+                class: "cursor-pointer px-3 py-1.5 text-sm bg-white text-gray-600 rounded-md border border-gray-200 hover:bg-gray-50 transition-all",
                 onclick: move |_| on_redo.call(()),
-                "Redo (Ctrl+Shift+Z)"
+                "Redo"
             }
             button {
-                class: "cursor-pointer px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors",
+                class: "cursor-pointer px-3 py-1.5 text-sm bg-blue-600 text-white rounded-md border border-blue-600 hover:bg-blue-700 transition-all",
                 onclick: move |_| on_export.call(()),
                 "Export"
             }

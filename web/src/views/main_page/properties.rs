@@ -7,7 +7,7 @@ pub fn Properties() -> Element {
             // Top Legend Section
             div { class: "space-y-2",
                 label { class: "block text-sm font-medium text-gray-700", "Top Legend" }
-                div { class: "grid grid-cols-3 gap-2",
+                div { class: "grid grid-cols-4 gap-2",
                     LegendInput {
                         index: 0,
                         hint: "Specify a top-left legend for the keycap",
@@ -26,7 +26,7 @@ pub fn Properties() -> Element {
             // Center Legend Section
             div { class: "space-y-2",
                 label { class: "block text-sm font-medium text-gray-700", "Center Legend" }
-                div { class: "grid grid-cols-3 gap-2",
+                div { class: "grid grid-cols-4 gap-2",
                     LegendInput {
                         index: 3,
                         hint: "Specify a center-left legend for the keycap",
@@ -45,7 +45,7 @@ pub fn Properties() -> Element {
             // Bottom Legend Section
             div { class: "space-y-2",
                 label { class: "block text-sm font-medium text-gray-700", "Bottom Legend" }
-                div { class: "grid grid-cols-3 gap-2",
+                div { class: "grid grid-cols-4 gap-2",
                     LegendInput {
                         index: 6,
                         hint: "Specify a bottom-left legend for the keycap",
@@ -64,7 +64,7 @@ pub fn Properties() -> Element {
             // Front Legend Section
             div { class: "space-y-2",
                 label { class: "block text-sm font-medium text-gray-700", "Front Legend" }
-                div { class: "grid grid-cols-3 gap-2",
+                div { class: "grid grid-cols-4 gap-2",
                     LegendInput {
                         index: 9,
                         hint: "Specify a front-left legend for the keycap",

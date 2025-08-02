@@ -32,7 +32,11 @@ pub fn Navbar(children: Element) -> Element {
                 div { class: "flex h-16 items-center justify-between",
                     // Logo/Brand (you can add this later if needed)
                     div { class: "flex items-center md:hidden" }
-                    p { "Rusty Keyboard Editor" }
+                    a {
+                        class: "text-2xl font-bold text-white hover:text-CustomAccentDarker transition-colors",
+                        href: "/",
+                        "Rusty Keyboard Editor"
+                    }
                     // Desktop navigation (center)
                     div { class: "hidden md:flex items-center space-x-8",
 
@@ -41,7 +45,7 @@ pub fn Navbar(children: Element) -> Element {
                             class: active_class(
                                 &Route::Home {},
                                 &current_route,
-                                "text-CustomAccent hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
+                                "text-white hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
                             ),
                             "Layout Editor"
                         }
@@ -50,7 +54,7 @@ pub fn Navbar(children: Element) -> Element {
                             class: active_class(
                                 &Route::Firmware {},
                                 &current_route,
-                                "text-CustomAccent hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
+                                "text-white hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
                             ),
                             "Firmware"
                         }
@@ -59,7 +63,7 @@ pub fn Navbar(children: Element) -> Element {
                             class: active_class(
                                 &Route::Preset {},
                                 &current_route,
-                                "text-CustomAccent hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
+                                "text-white hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
                             ),
                             "Presets"
                         }
