@@ -121,47 +121,9 @@ pub fn Home() -> Element {
         }
     };
 
-    let handle_layout_change_dvorak = {
-        let mut keys = keys.clone();
-        let mut current_layout = current_layout.clone();
-        let mut history = history.clone();
-        let mut history_position = history_position.clone();
-        move |_: ()| {
-            let new_keys = LayoutType::Dvorak.get_keys();
-            keys.set(new_keys.clone());
-            current_layout.set(LayoutType::Dvorak);
-            
-            // Save to history
-            let mut history_vec = history.write();
-            let pos = *history_position.read();
-            if pos < history_vec.len().saturating_sub(1) {
-                history_vec.truncate(pos + 1);
-            }
-            history_vec.push(new_keys);
-            history_position.set(history_vec.len() - 1);
-        }
-    };
 
-    let handle_layout_change_colemak = {
-        let mut keys = keys.clone();
-        let mut current_layout = current_layout.clone();
-        let mut history = history.clone();
-        let mut history_position = history_position.clone();
-        move |_: ()| {
-            let new_keys = LayoutType::Colemak.get_keys();
-            keys.set(new_keys.clone());
-            current_layout.set(LayoutType::Colemak);
-            
-            // Save to history
-            let mut history_vec = history.write();
-            let pos = *history_position.read();
-            if pos < history_vec.len().saturating_sub(1) {
-                history_vec.truncate(pos + 1);
-            }
-            history_vec.push(new_keys);
-            history_position.set(history_vec.len() - 1);
-        }
-    };
+
+
 
     rsx! {
         div { class: "flex flex-col min-h-screen p-4",

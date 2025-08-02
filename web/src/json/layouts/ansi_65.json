@@ -1,0 +1,240 @@
+{
+  "name": "ANSI 65% Layout",
+  "author": "Rusty Keyboard",
+  "layers": [
+    {
+      "id": 0,
+      "name": "Base Layer",
+      "keys": [
+        { "label": "Esc", "x": 0, "y": 0, "keycode": "Escape" },
+        {
+          "label": "1",
+          "secondaryLabel": "!",
+          "x": 1,
+          "y": 0,
+          "keycode": "Digit1"
+        },
+        {
+          "label": "2",
+          "secondaryLabel": "@",
+          "x": 2,
+          "y": 0,
+          "keycode": "Digit2"
+        },
+        {
+          "label": "3",
+          "secondaryLabel": "#",
+          "x": 3,
+          "y": 0,
+          "keycode": "Digit3"
+        },
+        {
+          "label": "4",
+          "secondaryLabel": "$",
+          "x": 4,
+          "y": 0,
+          "keycode": "Digit4"
+        },
+        {
+          "label": "5",
+          "secondaryLabel": "%",
+          "x": 5,
+          "y": 0,
+          "keycode": "Digit5"
+        },
+        {
+          "label": "6",
+          "secondaryLabel": "^",
+          "x": 6,
+          "y": 0,
+          "keycode": "Digit6"
+        },
+        {
+          "label": "7",
+          "secondaryLabel": "&",
+          "x": 7,
+          "y": 0,
+          "keycode": "Digit7"
+        },
+        {
+          "label": "8",
+          "secondaryLabel": "*",
+          "x": 8,
+          "y": 0,
+          "keycode": "Digit8"
+        },
+        {
+          "label": "9",
+          "secondaryLabel": "(",
+          "x": 9,
+          "y": 0,
+          "keycode": "Digit9"
+        },
+        {
+          "label": "0",
+          "secondaryLabel": ")",
+          "x": 10,
+          "y": 0,
+          "keycode": "Digit0"
+        },
+        {
+          "label": "-",
+          "secondaryLabel": "_",
+          "x": 11,
+          "y": 0,
+          "keycode": "Minus"
+        },
+        {
+          "label": "=",
+          "secondaryLabel": "+",
+          "x": 12,
+          "y": 0,
+          "keycode": "Equal"
+        },
+        {
+          "label": "Backspace",
+          "width": 2,
+          "x": 13,
+          "y": 0,
+          "keycode": "Backspace"
+        },
+        {
+          "label": "`",
+          "secondaryLabel": "~",
+          "x": 15,
+          "y": 0,
+          "keycode": "Backquote"
+        },
+
+        { "label": "Tab", "width": 2, "x": 0, "y": 1, "keycode": "Tab" },
+        { "label": "Q", "x": 2, "y": 1, "keycode": "KeyQ" },
+        { "label": "W", "x": 3, "y": 1, "keycode": "KeyW" },
+        { "label": "E", "x": 4, "y": 1, "keycode": "KeyE" },
+        { "label": "R", "x": 5, "y": 1, "keycode": "KeyR" },
+        { "label": "T", "x": 6, "y": 1, "keycode": "KeyT" },
+        { "label": "Y", "x": 7, "y": 1, "keycode": "KeyY" },
+        { "label": "U", "x": 8, "y": 1, "keycode": "KeyU" },
+        { "label": "I", "x": 9, "y": 1, "keycode": "KeyI" },
+        { "label": "O", "x": 10, "y": 1, "keycode": "KeyO" },
+        { "label": "P", "x": 11, "y": 1, "keycode": "KeyP" },
+        {
+          "label": "[",
+          "secondaryLabel": "{",
+          "x": 12,
+          "y": 1,
+          "keycode": "BracketLeft"
+        },
+        {
+          "label": "]",
+          "secondaryLabel": "}",
+          "x": 13,
+          "y": 1,
+          "keycode": "BracketRight"
+        },
+        {
+          "label": "\\",
+          "secondaryLabel": "|",
+          "width": 2,
+          "x": 14,
+          "y": 1,
+          "keycode": "Backslash"
+        },
+        { "label": "Del", "x": 15, "y": 1, "keycode": "Delete" },
+
+        { "label": "Caps", "width": 2, "x": 0, "y": 2, "keycode": "CapsLock" },
+        { "label": "A", "x": 2, "y": 2, "keycode": "KeyA" },
+        { "label": "S", "x": 3, "y": 2, "keycode": "KeyS" },
+        { "label": "D", "x": 4, "y": 2, "keycode": "KeyD" },
+        { "label": "F", "x": 5, "y": 2, "keycode": "KeyF" },
+        { "label": "G", "x": 6, "y": 2, "keycode": "KeyG" },
+        { "label": "H", "x": 7, "y": 2, "keycode": "KeyH" },
+        { "label": "J", "x": 8, "y": 2, "keycode": "KeyJ" },
+        { "label": "K", "x": 9, "y": 2, "keycode": "KeyK" },
+        { "label": "L", "x": 10, "y": 2, "keycode": "KeyL" },
+        {
+          "label": ";",
+          "secondaryLabel": ":",
+          "x": 11,
+          "y": 2,
+          "keycode": "Semicolon"
+        },
+        {
+          "label": "'",
+          "secondaryLabel": "\"",
+          "x": 12,
+          "y": 2,
+          "keycode": "Quote"
+        },
+        { "label": "Enter", "width": 2, "x": 13, "y": 2, "keycode": "Enter" },
+        { "label": "PgUp", "x": 15, "y": 2, "keycode": "PageUp" },
+
+        {
+          "label": "Shift",
+          "width": 2,
+          "x": 0,
+          "y": 3,
+          "keycode": "ShiftLeft"
+        },
+        { "label": "Z", "x": 2, "y": 3, "keycode": "KeyZ" },
+        { "label": "X", "x": 3, "y": 3, "keycode": "KeyX" },
+        { "label": "C", "x": 4, "y": 3, "keycode": "KeyC" },
+        { "label": "V", "x": 5, "y": 3, "keycode": "KeyV" },
+        { "label": "B", "x": 6, "y": 3, "keycode": "KeyB" },
+        { "label": "N", "x": 7, "y": 3, "keycode": "KeyN" },
+        { "label": "M", "x": 8, "y": 3, "keycode": "KeyM" },
+        {
+          "label": ",",
+          "secondaryLabel": "<",
+          "x": 9,
+          "y": 3,
+          "keycode": "Comma"
+        },
+        {
+          "label": ".",
+          "secondaryLabel": ">",
+          "x": 10,
+          "y": 3,
+          "keycode": "Period"
+        },
+        {
+          "label": "/",
+          "secondaryLabel": "?",
+          "x": 11,
+          "y": 3,
+          "keycode": "Slash"
+        },
+        {
+          "label": "Shift",
+          "width": 2,
+          "x": 12,
+          "y": 3,
+          "keycode": "ShiftRight"
+        },
+        { "label": "↑", "x": 14, "y": 3, "keycode": "ArrowUp" },
+        { "label": "PgDn", "x": 15, "y": 3, "keycode": "PageDown" },
+
+        {
+          "label": "Ctrl",
+          "width": 2,
+          "x": 0,
+          "y": 4,
+          "keycode": "ControlLeft"
+        },
+        { "label": "Win", "x": 2, "y": 4, "keycode": "MetaLeft" },
+        { "label": "Alt", "x": 3, "y": 4, "keycode": "AltLeft" },
+        { "label": "Space", "width": 6, "x": 4, "y": 4, "keycode": "Space" },
+        { "label": "Alt", "x": 10, "y": 4, "keycode": "AltRight" },
+        { "label": "Fn", "x": 11, "y": 4, "keycode": "Fn" },
+        { "label": "Ctrl", "x": 12, "y": 4, "keycode": "ControlRight" },
+        { "label": "←", "x": 13, "y": 4, "keycode": "ArrowLeft" },
+        { "label": "↓", "x": 14, "y": 4, "keycode": "ArrowDown" },
+        { "label": "→", "x": 15, "y": 4, "keycode": "ArrowRight" }
+      ]
+    }
+  ],
+  "meta": {
+    "created": "2025-08-02",
+    "modified": "2025-08-02",
+    "description": "A 65% has alphas, modifiers, and an extra right column to accommodate arrow keys."
+  }
+}

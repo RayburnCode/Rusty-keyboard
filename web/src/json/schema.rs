@@ -31,7 +31,7 @@ pub struct KeyboardLayer {
 }
 
 /// Key specification matching your struct
-#[derive(Debug, Serialize, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 pub struct KeyData {
     #[serde(default = "generate_id")]
     pub id: String,
