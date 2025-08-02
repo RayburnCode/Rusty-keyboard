@@ -4713,6 +4713,7 @@ dependencies = [
  "chrono",
  "dioxus",
  "getrandom 0.2.16",
+ "log",
  "nanoid",
  "serde_json",
 ]

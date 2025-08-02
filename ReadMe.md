@@ -9,7 +9,7 @@ A modern keyboard layout and firmware editor built with Rust, Dioxus, and Tailwi
 
 ![Screenshot of Rusty Keyboard Editor](screenshot.png) <!-- Add actual screenshot later -->
 
-## Features ✨
+## Features
 
 - 🖥️ Intuitive visual keyboard layout editor
 - 🔧 Firmware configuration tool
@@ -19,16 +19,16 @@ A modern keyboard layout and firmware editor built with Rust, Dioxus, and Tailwi
 - 🎮 Supports both ANSI and ISO layouts
 - 🔌 Compatible with popular keyboard firmware formats
 
-## Goals 🎯
+## Goals
 
-I wanted to modernize existing keyboard tools while learning Rust and web development. This project combines:
+Modernize existing keyboard tools while learning Rust and web development. This project combines:
 
 1. **Layout Editing** functionality from [Keyboard Layout Editor](https://www.keyboard-layout-editor.com)
 2. **Firmware Building** from [KBFirmware](https://kbfirmware.com)
 
 All built with modern technologies that ensure longevity and performance.
 
-## Technology Stack 🛠️
+## Tech Stack
 
 - **Rust** - For core logic and performance
 - **Dioxus** - React-like framework for building user interfaces

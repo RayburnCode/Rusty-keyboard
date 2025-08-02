@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use serde_json::json;
 
-use crate::views::main_page::Properties;
+use crate::views::main_page::{Properties,JSONOUT,KeySummary};
 
 #[derive(PartialEq, Clone)]
 enum ActiveTab {
@@ -60,46 +60,20 @@ pub fn KeyboardTabs() -> Element {
                 match *active_tab.read() {
                     ActiveTab::Properties => rsx! {
                         div { class: "bg-gray-100 p-4 rounded-lg",
-                            p { class: "text-gray-700 text-sm mb-2", "Properties will be displayed here." }
+                            p { class: "text-gray-700 text-sm mb-2", Properties {} }
                         }
                     },
                     ActiveTab::Summary => rsx! {
-                        div {
-                            table { class: "min-w-full divide-y divide-gray-200",
-                                thead { class: "bg-gray-50",
-                                    tr {
-                                        th { class: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                            "Key Size Summary"
-                                        }
-                                    }
-                                }
-                                tbody { class: "bg-white divide-y divide-gray-200",
-                                    tr {
-                                        td { class: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", "1x1" }
-                                        td { class: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", "=2" }
-                                    }
-                                    tr {
-                                        td { class: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", "1x2" }
-                                    }
-                                    tr {
-                                        td { class: "px-6 py-4 whitespace-nowrap text-sm text-gray-500", "2x1" }
-                                    }
-                                }
-                                tfoot { class: "bg-gray-50",
-                                    tr {
-                                        td { class: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                            "Total"
-                                        }
-                                        td { class: "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
-                                            "3"
-                                        }
-                                    }
-                                }
+                        div { class: "bg-gray-100 p-4 rounded-lg",
+                            p { class: "text-gray-700 text-sm mb-2",
+                                KeySummary { key_sizes: vec![] }
                             }
                         }
                     },
                     ActiveTab::JsonOutput => rsx! {
-                        div { class: "bg-gray-100 p-4 rounded-lg", JSONOUT {} }
+                        div { class: "bg-gray-100 p-4 rounded-lg",
+                            JSONOUT { keys: vec![] }
+                        }
                     },
                 }
             }
