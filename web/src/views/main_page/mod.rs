@@ -10,8 +10,8 @@ pub use layout_editor::LayoutEditor;
 mod home;
 pub use home::Home;
 
-mod properties;
-pub use properties::Properties;
+// mod properties;
+// pub use properties::Properties;
 
 mod json;
 pub use json::JSONOUT;

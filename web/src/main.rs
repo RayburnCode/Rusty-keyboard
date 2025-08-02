@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 mod constants;
-
+mod json;
 mod key_layouts;
 mod views; 
 
