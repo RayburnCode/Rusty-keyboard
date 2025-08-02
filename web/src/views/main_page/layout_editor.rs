@@ -30,9 +30,7 @@ pub fn LayoutEditor(props: LayoutEditorProps) -> Element {
             }
 
             // Keyboard container
-            div {
-                class: "relative overflow-auto bg-gray-100 border-2 border-dashed border-gray-400 rounded-lg p-4",
-                style: "height: 500px;",
+            div { class: "relative overflow-auto bg-gray-100 border-2 border-dashed border-gray-400 rounded-lg p-4",
                 div {
                     class: "keyboard-layout",
                     style: "transform: scale({zoom_level()}); transform-origin: 0 0;",
