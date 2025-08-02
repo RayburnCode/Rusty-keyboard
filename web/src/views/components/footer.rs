@@ -7,7 +7,7 @@ use crate::constants::*;
 #[component]
 pub fn Footer(children: Element) -> Element {
 rsx! {
-    div { class: "px-4 sm:px-6 lg:px-8 pb-2 grid grid-cols-1 md:grid-cols-2 bg-CustomBackground lg:grid-cols-2 gap-8",
+    div { class: "px-4 sm:px-6 lg:px-8 pb-2  bg-CustomBackground lg:grid-cols-2 gap-8",
 
         // Bottom Section with Social Media Links
         div { class: "text-white sm:flex sm:items-center sm:justify-between px-4 py-2 text-center bg-CustomNav shadow-md",
@@ -86,6 +86,5 @@ rsx! {
                 }
             }
         }
-    
     }
 }}

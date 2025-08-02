@@ -3,10 +3,12 @@ mod constants;
 
 mod key_layouts;
 mod views; 
+
+
 use crate::views::{AppLayout, };
 use crate::views::main_page::Home;
 use crate::views::firmware::Firmware;
-
+use crate::views::presets::Preset;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 #[rustfmt::skip]
@@ -17,7 +19,11 @@ enum Route {
 
     #[route("/firmware")]
     Firmware {},
- 
+
+
+
+    #[route("/presets")]
+    Preset {},
 
 }
 

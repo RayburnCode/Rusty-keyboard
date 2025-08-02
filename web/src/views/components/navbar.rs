@@ -55,9 +55,9 @@ pub fn Navbar(children: Element) -> Element {
                             "Firmware"
                         }
                         Link {
-                            to: Route::Home {},
+                            to: Route::Preset {},
                             class: active_class(
-                                &Route::Home {},
+                                &Route::Preset {},
                                 &current_route,
                                 "text-CustomAccent hover:text-CustomAccentDarker px-1 py-2 text-sm font-medium transition-colors",
                             ),

@@ -105,7 +105,7 @@ pub fn Home() -> Element {
         let mut current_layout = current_layout.clone();
         let mut history = history.clone();
         let mut history_position = history_position.clone();
-        move |_| {
+        move |_: ()| {
             let new_keys = Qwerty.get_keys();
             keys.set(new_keys.clone());
             current_layout.set(Qwerty);
@@ -126,7 +126,7 @@ pub fn Home() -> Element {
         let mut current_layout = current_layout.clone();
         let mut history = history.clone();
         let mut history_position = history_position.clone();
-        move |_| {
+        move |_: ()| {
             let new_keys = LayoutType::Dvorak.get_keys();
             keys.set(new_keys.clone());
             current_layout.set(LayoutType::Dvorak);
@@ -147,7 +147,7 @@ pub fn Home() -> Element {
         let mut current_layout = current_layout.clone();
         let mut history = history.clone();
         let mut history_position = history_position.clone();
-        move |_| {
+        move |_: ()| {
             let new_keys = LayoutType::Colemak.get_keys();
             keys.set(new_keys.clone());
             current_layout.set(LayoutType::Colemak);
@@ -166,31 +166,7 @@ pub fn Home() -> Element {
     rsx! {
         div { class: "flex flex-col min-h-screen p-4",
             // Instructions
-            p { class: "text-red-500 text-lg font-medium mb-4",
-                "Use arrow keys or mouse to move around the keyboard layout"
-            }
-            // Layout selector
-            div { class: "mb-4 p-4 bg-white rounded-lg shadow",
-                h3 { class: "text-lg font-semibold mb-2", "Keyboard Layout" }
-                div { class: "flex gap-2",
-                    button {
-                        class: if *current_layout.read() == Qwerty { "px-4 py-2 bg-blue-500 text-white rounded" } else { "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" },
-                        onclick: handle_layout_change_qwerty,
-                        "QWERTY"
-                    }
-                    button {
-                        class: if *current_layout.read() == LayoutType::Dvorak { "px-4 py-2 bg-blue-500 text-white rounded" } else { "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" },
-                        onclick: handle_layout_change_dvorak,
-                        "Dvorak"
-                    }
-                    button {
-                        class: if *current_layout.read() == LayoutType::Colemak { "px-4 py-2 bg-blue-500 text-white rounded" } else { "px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" },
-                        onclick: handle_layout_change_colemak,
-                        "Colemak"
-                    }
-                }
-            }
-            // Control options at top
+
             KeyboardOptions {
                 on_add_keys: handle_add_keys,
                 on_delete_key: handle_delete_key,
@@ -198,14 +174,14 @@ pub fn Home() -> Element {
                 on_redo: handle_redo,
                 on_export: handle_export,
             }
-            // Main content area - responsive row/column layout
-            div { class: "flex flex-col lg:flex-row gap-4 mt-4",
-                // Layout editor takes 2/3 space on desktop, full width on mobile
-                div { class: "w-full lg:w-2/3",
+            // Main content area - always full width, stacked vertically
+            div { class: "flex flex-col gap-4 mt-4",
+                // Layout editor - always full width
+                div { class: "w-full",
                     LayoutEditor { keys: keys.read().clone() }
                 }
-                // Tabs take 1/3 space on desktop, full width on mobile
-                div { class: "w-full lg:w-1/3", KeyboardTabs {} }
+                // Tabs - always full width
+                div { class: "w-full", KeyboardTabs {} }
             }
         }
     }

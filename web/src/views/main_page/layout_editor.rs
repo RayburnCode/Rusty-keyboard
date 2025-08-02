@@ -12,9 +12,8 @@ pub fn LayoutEditor(props: LayoutEditorProps) -> Element {
     let mut zoom_level = use_signal(|| 1.0_f64);
 
     rsx! {
-        div { class: "flex flex-col gap-4 p-4 mx-auto w-full max-w-6xl",
+        div { class: "flex flex-col gap-4 p-4 mx-auto w-full max-w-8xl",
             h2 { class: "text-xl font-bold mb-4", "Keyboard Layout Editor" }
-            
             // Zoom controls
             div { class: "flex gap-2 items-center justify-end",
                 button {
@@ -34,15 +33,13 @@ pub fn LayoutEditor(props: LayoutEditorProps) -> Element {
             div {
                 class: "relative overflow-auto bg-gray-100 border-2 border-dashed border-gray-400 rounded-lg p-4",
                 style: "height: 500px;",
-                
                 div {
                     class: "keyboard-layout",
                     style: "transform: scale({zoom_level()}); transform-origin: 0 0;",
-                    
                     // Dynamic keyboard layout based on props
                     div { class: "flex flex-wrap gap-1 w-fit max-w-4xl",
                         for key in &props.keys {
-                            Key { 
+                            Key {
                                 label: key.label.clone(),
                                 secondary_label: key.secondary_label.clone(),
                                 width: key.width,

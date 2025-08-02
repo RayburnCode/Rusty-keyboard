@@ -24,7 +24,7 @@ pub fn KeyboardOptions(
             // Add Key button with dropdown
             div { class: "relative",
                 button {
-                    class: "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors flex items-center gap-1",
+                    class: "px-4 cursor-pointer py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors flex items-center gap-1",
                     onclick: move |_| {
                         let count = match *add_amount.read() {
                             AddKeyAmount::One => 1,
@@ -106,23 +106,23 @@ pub fn KeyboardOptions(
 
             // Other controls
             button {
-                class: "px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors",
+                class: "px-4 cursor-pointer py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors",
                 disabled: false, // You'd set this based on selection state
                 onclick: move |_| on_delete_key.call(()),
                 "Delete Key"
             }
             button {
-                class: "px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors",
+                class: "px-4 cursor-pointer py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors",
                 onclick: move |_| on_undo.call(()),
                 "Undo (Ctrl+Z)"
             }
             button {
-                class: "px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors",
+                class: " cursor-pointer px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors",
                 onclick: move |_| on_redo.call(()),
                 "Redo (Ctrl+Shift+Z)"
             }
             button {
-                class: "px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors",
+                class: "cursor-pointer px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors",
                 onclick: move |_| on_export.call(()),
                 "Export"
             }
