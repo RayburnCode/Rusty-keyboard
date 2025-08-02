@@ -1,5 +1,5 @@
 // client/components/layout/app_layout.rs
-use dioxus::{html::p, prelude::*};
+use dioxus::prelude::*;
 use crate::views::firmware::{ FirmwareTabs};
 
 

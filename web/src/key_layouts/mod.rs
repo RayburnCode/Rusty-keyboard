@@ -19,12 +19,4 @@ impl LayoutType {
             LayoutType::Colemak => colemak::get_colemak_layout(),
         }
     }
-
-    pub fn name(&self) -> &'static str {
-        match self {
-            LayoutType::Qwerty => "QWERTY",
-            LayoutType::Dvorak => "Dvorak",
-            LayoutType::Colemak => "Colemak",
-        }
-    }
 }

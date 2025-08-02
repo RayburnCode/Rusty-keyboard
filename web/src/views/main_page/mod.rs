@@ -1,5 +1,5 @@
 mod tabs;
-pub use tabs::{KeyboardTabs, JSONOUT};
+pub use tabs::KeyboardTabs;
 
 mod key_options;
 pub use key_options::KeyboardOptions;

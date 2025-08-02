@@ -1,6 +1,5 @@
 use dioxus::prelude::*;
 mod constants;
-use crate::constants::*;
 
 mod key_layouts;
 mod views; 
