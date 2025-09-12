@@ -1,0 +1,20 @@
+[package]
+name = "embedded"
+version = "0.1.0"
+edition = "2024"
+
+
+[[bin]]
+name = "embedded"
+test = false
+bench = false
+
+[dependencies]
+cortex-m-rt = "0.7.5"
+[build]
+# Pick ONE of these compilation targets
+ target = "thumbv6m-none-eabi"    # Cortex-M0 and Cortex-M0+
+
+# architecture, Vendor, environment
+#ISA Support = Instruction Set Architecture Support
+# EABI = Embedded Application Binary Interface
