@@ -25,3 +25,17 @@ thumbv6m-none-eabi
 ```
 
 - The target CPU option is cortex-m0plus.
+
+```rust
+cargo size -- -Ax
+```
+
+```
+probe-rs chip list
+```
+
+```
+cargo flash --release --chip RP2040
+```
+
+cargo embed --chip RP2040

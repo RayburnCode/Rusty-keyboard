@@ -11,9 +11,7 @@ bench = false
 
 [dependencies]
 cortex-m-rt = "0.7.5"
-[build]
-# Pick ONE of these compilation targets
- target = "thumbv6m-none-eabi"    # Cortex-M0 and Cortex-M0+
+panic-halt = "1.0.0"
 
 # architecture, Vendor, environment
 #ISA Support = Instruction Set Architecture Support
