@@ -6,3 +6,8 @@
 rustflags = [
   "-C", "link-arg=-Tlink.x",
 ]
+runner = 'probe-rs run --chip rp2040' # <- change for your chip
+
+
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "picotool load --update --verify --execute -t elf"
