@@ -1,26 +1,50 @@
 #![no_std]
 #![no_main]
 
-use defmt::*;
-use embassy_executor::Spawner;
-use embassy_nrf::gpio::{Level, Output, OutputDrive};
-use embassy_time::{Duration, Timer};
-use {defmt_rtt as _, panic_probe as _}; // global logger
+use panic_halt as _;
+use rp_pico::entry;
+use rp_pico::hal::{
+    pac,
+    Clock,
+    clocks::{init_clocks_and_plls},
+    gpio::Pins,
+    Sio,
+    watchdog::Watchdog
+};
+use embedded_hal::digital::OutputPin;
 
-#[embassy_executor::task]
-async fn blinker(mut led: Output<'static>, interval: Duration) {
+#[entry]
+fn main() -> ! {
+    let mut pac = pac::Peripherals::take().unwrap();
+    let mut watchdog = Watchdog::new(pac.WATCHDOG);
+    
+    let _clocks = init_clocks_and_plls(
+        rp_pico::XOSC_CRYSTAL_FREQ,
+        pac.XOSC,
+        pac.CLOCKS,
+        pac.PLL_SYS,
+        pac.PLL_USB,
+        &mut pac.RESETS,
+        &mut watchdog,
+    ).ok().unwrap();
+    
+    let sio = Sio::new(pac.SIO);
+    let pins = Pins::new(pac.IO_BANK0, pac.PADS_BANK0, sio.gpio_bank0, &mut pac.RESETS);
+    
+    // Explicitly use GPIO 25
+    let mut led_pin = pins.gpio25.into_push_pull_output();
+    
     loop {
-        led.set_high();
-        Timer::after(interval).await;
-        led.set_low();
-        Timer::after(interval).await;
+        // Turn on for 2 seconds
+        led_pin.set_high().unwrap();
+        for _ in 0..16_000_000 {
+            cortex_m::asm::nop();
+        }
+        
+        // Turn off for 2 seconds  
+        led_pin.set_low().unwrap();
+        for _ in 0..16_000_000 {
+            cortex_m::asm::nop();
+        }
     }
-}
-
-#[embassy_executor::main]
-async fn main(spawner: Spawner) {
-    let p = embassy_nrf::init(Default::default());
-
-    let led = Output::new(p.P0_13, Level::Low, OutputDrive::Standard);
-    spawner.spawn(unwrap!(blinker(led, Duration::from_millis(300))));
 }
